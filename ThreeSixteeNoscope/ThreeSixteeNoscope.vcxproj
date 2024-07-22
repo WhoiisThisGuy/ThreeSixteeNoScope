@@ -24,7 +24,6 @@
     <ProjectGuid>{8a1cc0be-37ef-4176-bb43-d2ae1191dd46}</ProjectGuid>
     <RootNamespace>Leopoly</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>ThreeSixteeNoscope</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

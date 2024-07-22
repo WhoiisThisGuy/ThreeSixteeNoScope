@@ -1,5 +1,4 @@
 #include "VectorSet.h"
-#include <iostream> //debug only
 
 Vec3::Vec3(float _x, float _y, float _z) : x(_x), y(_y), z(_z)
 {
@@ -36,7 +35,7 @@ bool inline isEqual(const Vec3& a, const Vec3& b,const double eps)
 	const double mag1 = a.magnitude();
 	const double mag2 = b.magnitude();
 	double Theta = dot / (mag1 * mag2);
-	// Ensure Theta is within the valid range for acos due to numerical precision issues
+	
 	if (Theta > 1.0) Theta = 1.0;
 	if (Theta < -1.0) Theta = -1.0;
 
@@ -47,12 +46,10 @@ bool inline isEqual(const Vec3& a, const Vec3& b,const double eps)
 
 bool VectorSet::addVector(const Vec3& vecToAdd)
 {
-	//check if we can add it
 	Vec3 closest(0,0,0);
-	//std::cout << "xxxAAAAAAAAAAAAADdVector x, y ,z: " << vecToAdd.x << ' ' << vecToAdd.y << ' ' << vecToAdd.z << '\n';
+
 	if (findClosest(vecToAdd, &closest))
 	{
-		//std::cout << "xxxxxxyyyClosest x, y ,z: " << closest.x << ' ' << closest.y << ' ' << closest.z<<'\n';
 		if (isEqual(vecToAdd,closest,m_epsilon))
 		{
 			return false;
@@ -120,10 +117,7 @@ bool VectorSet::findClosest(const Vec3& targetVector, Vec3* closest) const
 		const auto radTheta = std::acos(tempRadTheta);
 		
 		const auto degTheta = radiansToDegrees(radTheta);
-		if(radTheta <0)
-		{
-			std::cout << "radTheta is negative: "<< radTheta <<'\n';
-		}
+		
 		if (degTheta <= degSmallestAngle)
 		{
 			degSmallestAngle = degTheta;
